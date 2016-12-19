@@ -57,7 +57,31 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // Check if there is a item(s) exists
+        if let objs = controller.fetchedObjects, objs.count > 0 {
+            let item = objs[indexPath.row]
+            performSegue(withIdentifier: "ItemDetailsVC", sender: item)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemDetailsVC" {
+            if let destination = segue.destination as? ItemVC {
+                if let item = sender as? Item {
+                    destination.itemToEdit = item
+                }
+            }
+        }
+    }
 
+    /**
+     Function to featch wisher items from CoreData
+     
+     - returns: void
+     */
     func attemptFetch() {
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
         let dateSort = NSSortDescriptor(key: "created", ascending: false)
@@ -65,6 +89,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
+        controller.delegate = self
         self.controller = controller
         
         do {
@@ -86,12 +111,12 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch(type) {
         case .insert:
-            if let inxedPath = newIndexPath {
-                tableView.insertRows(at: [indexPath!], with: .fade)
+            if newIndexPath != nil {
+                tableView.insertRows(at: [newIndexPath!], with: .fade)
             }
             break
         case .delete:
-            if let inxedPath = indexPath {
+            if indexPath != nil {
                 tableView.deleteRows(at: [indexPath!], with: .fade)
             }
             break

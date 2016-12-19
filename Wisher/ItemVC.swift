@@ -18,6 +18,8 @@ class ItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var stores = [Store]()
     
+    var itemToEdit: Item?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,6 +53,10 @@ class ItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         getStores()
         
         self.hideKeyboardWhenTappedAround()
+        
+        if itemToEdit != nil {
+            loadItemData()
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -83,4 +89,60 @@ class ItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
+    /**
+     Function to save/edit item in CoreData
+     
+     - parameter sender: Any
+     
+     - returns: void
+     */
+    @IBAction func saveTapped(_ sender: Any) {
+        var item: Item!
+        
+        // Check if we editing or adding new item
+        if itemToEdit == nil {
+            item = Item(context: context)
+        } else {
+            item = itemToEdit
+        }
+        
+        if let title = titleField.text {
+            item.title = title
+        }
+        if let price = priceField.text {
+            item.price = (price as NSString).doubleValue
+        }
+        if let details = detailsField.text {
+            item.details = details
+        }
+        
+        item.toStore = stores[storePicker.selectedRow(inComponent: 0)]
+        
+        
+        // Save data
+        ad.saveContext()
+        
+        // Close/dismiss view controller
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    
+    func loadItemData() {
+        if let item = itemToEdit {
+            titleField.text = item.title
+            priceField.text = "\(item.price)"
+            detailsField.text = item.details
+            
+            if let store = item.toStore {
+                var index = 0
+                repeat {
+                    let s  = stores[index]
+                    if s.name == store.name {
+                        storePicker.selectRow(index, inComponent: 0, animated: false)
+                    }
+                    index += 1
+                } while (index < stores.count)
+            }
+        }
+    }
 }
