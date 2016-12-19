@@ -15,6 +15,14 @@
 		41430C291E037A9800DA54D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41430C271E037A9800DA54D7 /* LaunchScreen.storyboard */; };
 		41610C921E038DCC0063E541 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41610C911E038DCC0063E541 /* MaterialView.swift */; };
 		41610C941E0391010063E541 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41610C931E0391010063E541 /* ItemCell.swift */; };
+		41610CBD1E0776F10063E541 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41610CB51E0776F10063E541 /* Item+CoreDataClass.swift */; };
+		41610CBE1E0776F10063E541 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41610CB61E0776F10063E541 /* Item+CoreDataProperties.swift */; };
+		41610CBF1E0776F10063E541 /* Image+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41610CB71E0776F10063E541 /* Image+CoreDataClass.swift */; };
+		41610CC01E0776F10063E541 /* Image+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41610CB81E0776F10063E541 /* Image+CoreDataProperties.swift */; };
+		41610CC11E0776F10063E541 /* ItemType+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41610CB91E0776F10063E541 /* ItemType+CoreDataClass.swift */; };
+		41610CC21E0776F10063E541 /* ItemType+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41610CBA1E0776F10063E541 /* ItemType+CoreDataProperties.swift */; };
+		41610CC31E0776F10063E541 /* Store+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41610CBB1E0776F10063E541 /* Store+CoreDataClass.swift */; };
+		41610CC41E0776F10063E541 /* Store+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41610CBC1E0776F10063E541 /* Store+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +36,14 @@
 		41430C2A1E037A9800DA54D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		41610C911E038DCC0063E541 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		41610C931E0391010063E541 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		41610CB51E0776F10063E541 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41610CB61E0776F10063E541 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41610CB71E0776F10063E541 /* Image+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41610CB81E0776F10063E541 /* Image+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41610CB91E0776F10063E541 /* ItemType+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemType+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41610CBA1E0776F10063E541 /* ItemType+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemType+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		41610CBB1E0776F10063E541 /* Store+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataClass.swift"; sourceTree = "<group>"; };
+		41610CBC1E0776F10063E541 /* Store+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +102,11 @@
 		41610C8F1E03893D0063E541 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				41610CB51E0776F10063E541 /* Item+CoreDataClass.swift */,
+				41610CB71E0776F10063E541 /* Image+CoreDataClass.swift */,
+				41610CB91E0776F10063E541 /* ItemType+CoreDataClass.swift */,
+				41610CBB1E0776F10063E541 /* Store+CoreDataClass.swift */,
+				41610CC51E077E540063E541 /* Generated */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -95,6 +116,17 @@
 			children = (
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		41610CC51E077E540063E541 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				41610CB61E0776F10063E541 /* Item+CoreDataProperties.swift */,
+				41610CB81E0776F10063E541 /* Image+CoreDataProperties.swift */,
+				41610CBC1E0776F10063E541 /* Store+CoreDataProperties.swift */,
+				41610CBA1E0776F10063E541 /* ItemType+CoreDataProperties.swift */,
+			);
+			name = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,8 +202,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41610CC01E0776F10063E541 /* Image+CoreDataProperties.swift in Sources */,
+				41610CC31E0776F10063E541 /* Store+CoreDataClass.swift in Sources */,
+				41610CBE1E0776F10063E541 /* Item+CoreDataProperties.swift in Sources */,
+				41610CC11E0776F10063E541 /* ItemType+CoreDataClass.swift in Sources */,
+				41610CBD1E0776F10063E541 /* Item+CoreDataClass.swift in Sources */,
 				41430C1E1E037A9800DA54D7 /* MainVC.swift in Sources */,
+				41610CC41E0776F10063E541 /* Store+CoreDataProperties.swift in Sources */,
+				41610CBF1E0776F10063E541 /* Image+CoreDataClass.swift in Sources */,
 				41430C1C1E037A9800DA54D7 /* AppDelegate.swift in Sources */,
+				41610CC21E0776F10063E541 /* ItemType+CoreDataProperties.swift in Sources */,
 				41430C241E037A9800DA54D7 /* Wisher.xcdatamodeld in Sources */,
 				41610C921E038DCC0063E541 /* MaterialView.swift in Sources */,
 				41610C941E0391010063E541 /* ItemCell.swift in Sources */,
