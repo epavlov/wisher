@@ -5,5 +5,5 @@ Shows how to create data model and do CRUD operations with CoreData as well as u
 
 Written in Swift 3 and xCode Version 8.2 (8C38)
 
-![alt tag](https://raw.githubusercontent.com/epavlov/wisher/master/screenshot_1.PNG)
-![alt tag](https://raw.githubusercontent.com/epavlov/wisher/master/screenshot_2.PNG)
+![alt tag](https://raw.githubusercontent.com/epavlov/wisher/master/screenshot_1.png)
+![alt tag](https://raw.githubusercontent.com/epavlov/wisher/master/screenshot_2.png)
