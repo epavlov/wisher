@@ -159,7 +159,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="EjW-sA-RWl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="EjW-sA-RWl">
                                 <rect key="frame" x="16" y="72" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="cIe-TM-GgY"/>
@@ -172,6 +172,9 @@
                                     <constraint firstAttribute="height" constant="100" id="Fih-Kf-uVw"/>
                                     <constraint firstAttribute="width" constant="100" id="pmO-oA-bhE"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="addImage:" destination="XGE-wR-gTW" eventType="touchUpInside" id="Iga-kP-ITH"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dw2-SI-9df" customClass="CustomTextField" customModule="Wisher" customModuleProvider="target">
                                 <rect key="frame" x="124" y="72" width="235" height="40"/>
@@ -262,12 +265,16 @@
                     <navigationItem key="navigationItem" title="Add/Edit" id="gRi-xV-52B">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="FVc-bH-5rv">
                             <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deleteTapped:" destination="XGE-wR-gTW" id="XBi-Ge-FUJ"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailsField" destination="i93-Ow-p8Y" id="vLb-Ka-f3d"/>
                         <outlet property="priceField" destination="mK7-VD-PNZ" id="Zpo-ND-4w7"/>
                         <outlet property="storePicker" destination="ITN-U5-uMP" id="AhV-lA-1JU"/>
+                        <outlet property="thumbImage" destination="EjW-sA-RWl" id="ABp-14-YRa"/>
                         <outlet property="titleField" destination="dw2-SI-9df" id="BoY-79-M2G"/>
                     </connections>
                 </viewController>
@@ -280,7 +287,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dlk-JO-u1y" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="gUc-Hg-wKm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gUc-Hg-wKm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>

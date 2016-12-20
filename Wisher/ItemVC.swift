@@ -9,16 +9,18 @@
 import UIKit
 import CoreData
 
-class ItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var storePicker: UIPickerView!
     @IBOutlet weak var titleField: CustomTextField!
     @IBOutlet weak var priceField: CustomTextField!
     @IBOutlet weak var detailsField: CustomTextField!
     
-    var stores = [Store]()
+    @IBOutlet weak var thumbImage: UIImageView!
     
-    var itemToEdit: Item?
+    var stores = [Store]()
+    var itemToEdit: Item? // optional variable to store item to edit
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,9 @@ class ItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         
         storePicker.dataSource = self
         storePicker.delegate = self
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         
         /*
         // Create "stores" data
@@ -118,6 +123,10 @@ class ItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         
         item.toStore = stores[storePicker.selectedRow(inComponent: 0)]
         
+        // Save image
+        let picture = Image(context: context)
+        picture.image = thumbImage.image
+        item.toImage = picture
         
         // Save data
         ad.saveContext()
@@ -126,12 +135,18 @@ class ItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         _ = navigationController?.popViewController(animated: true)
     }
     
-    
+    /**
+     Function to load item to edit if user taps on table view item
+     
+     - returns: void
+     */
     func loadItemData() {
         if let item = itemToEdit {
             titleField.text = item.title
             priceField.text = "\(item.price)"
             detailsField.text = item.details
+            
+            thumbImage.image = item.toImage?.image as? UIImage
             
             if let store = item.toStore {
                 var index = 0
@@ -145,4 +160,37 @@ class ItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
     }
+    
+    /**
+     Function to delete existing wisher item
+     */
+    @IBAction func deleteTapped(_ sender: Any) {
+        if itemToEdit != nil {
+            context.delete(itemToEdit!)
+            ad.saveContext()
+        }
+        
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    /**
+     Function to add image to wisher item.
+     Presents image picker view controller to the user
+     */
+    @IBAction func addImage(_ sender: UIButton) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    /**
+     Function to to fire after user selects image on device
+     */
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            thumbImage.image = img
+        }
+        
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
